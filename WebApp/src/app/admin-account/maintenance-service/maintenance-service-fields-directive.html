@@ -1,0 +1,157 @@
+<!-- ID -->
+<div>
+	<input type="hidden" class="form-control" id="id" name="id" [ngModel]="maintenanceService.id"/>
+</div>
+
+<!-- Name -->
+<div class="form-group row has-success has-error has-feedback">
+
+	<label for="name" class="col-md-3 col-sm-3 col-xs-12 control-label">Name *</label>
+	<div class="col-md-6 col-sm-6 col-xs-12">
+		<input type="text" class="form-control" id="name" name="name"
+			class="form-control" placeholder="Service Name" required maxlength="31"
+			[(ngModel)]="maintenanceService.name" #name="ngModel">
+
+		<div *ngIf="name.errors && (name.dirty || name.touched)">
+			<span [hidden]="name.valid || name.pristine"
+				class="glyphicon glyphicon-remove form-control-feedback form-control-feedback-dashboard">
+			</span>
+			<div class="form-control-error-message">
+				({{
+					name.errors.required ? FormValidationMessageService.getRequiredMessage("Name")
+					:name.errors.maxlength ? FormValidationMessageService.getMaxLengthMessage("Name",31)
+					:""
+				}})
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Type -->
+<div class="form-group row has-success has-error has-feedback">
+	<label class="col-md-3 col-sm-3 col-xs-12 control-label" for="type">Type<span class="required">*</span></label>
+	<div class="col-md-6 col-sm-6 col-xs-12">
+		<select class="form-control" name="type" id="type" required
+			[(ngModel)]="maintenanceService.type" #type="ngModel">>
+			<option value="SERVICE">SERVICE</option>
+			<option value="OTHER">OTHER</option>
+		</select>
+		<div *ngIf="type.errors && (type.dirty || type.touched)">
+			<span [hidden]="type.valid || type.pristine"
+				class="glyphicon glyphicon-remove form-control-feedback form-control-feedback-dashboard">
+			</span>
+			<div class="form-control-error-message">
+				({{
+					name.errors.required ? FormValidationMessageService.getRequiredMessage("Type")
+					:""
+				}})
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Category -->
+<div class="form-group row has-success has-error has-feedback">
+	<label class="col-md-3 col-sm-3 col-xs-12 control-label" for="category">Category<span class="required">*</span></label>
+	<div class="col-md-6 col-sm-6 col-xs-12">
+		<select class="form-control" name="category" id="category" required
+			[(ngModel)]="maintenanceService.category" #category="ngModel">>
+			<option value="ASSET">ASSET</option>
+			<option value="LEGAL">GENERAL</option>
+		</select>
+		<div *ngIf="category.errors && (category.dirty || category.touched)">
+			<span [hidden]="category.valid || category.pristine"
+				class="glyphicon glyphicon-remove form-control-feedback form-control-feedback-dashboard">
+			</span>
+			<div class="form-control-error-message">
+				({{
+					category.errors.required ? FormValidationMessageService.getRequiredMessage("Category")
+					:""
+				}})
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Property types applicable to -->
+<div class="form-group row has-success has-error has-feedback">
+	<label class="col-md-3 col-sm-3 col-xs-12 control-label" for="applicableTo">Property types applicable to<span class="required">*</span></label>
+	<div class="col-md-6 col-sm-6 col-xs-12">
+		<select class="form-control" multiple name="applicableTo" id="applicableTo" required
+			[(ngModel)]="maintenanceService.applicableTo" #applicableTo="ngModel">>
+			<option value="APARTMENT">APARTMENT</option>
+			<option value="HOUSE">HOUSE</option>
+			<option value="FLAT">FLAT</option>
+		</select>
+		<div *ngIf="category.errors && (category.dirty || category.touched)">
+			<span [hidden]="category.valid || category.pristine"
+				class="glyphicon glyphicon-remove form-control-feedback form-control-feedback-dashboard">
+			</span>
+			<div class="form-control-error-message">
+				({{
+					category.errors.required ? FormValidationMessageService.getRequiredMessage("Applicable property type")
+					:""
+				}})
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Amenities -->
+<div class="form-group row has-success has-error has-feedback">
+	<label class="col-md-3 col-sm-3 col-xs-12 control-label" for="amenities">Amenities applicable to<span class="required">*</span></label>
+	<div class="col-md-6 col-sm-6 col-xs-12">
+		<select class="form-control" multiple name="amenities" id="amenities" required
+			[(ngModel)]="maintenanceService.amenities" #amenities="ngModel">>
+			<option value="Sewage">SEWAGE</option>
+			<option value="Plumbing">PLUMBING</option>
+		</select>
+		<div *ngIf="amenities.errors && (amenities.dirty || amenities.touched)">
+			<span [hidden]="amenities.valid || amenities.pristine"
+				class="glyphicon glyphicon-remove form-control-feedback form-control-feedback-dashboard">
+			</span>
+			<div class="form-control-error-message">
+				({{
+					amenities.errors.required ? FormValidationMessageService.getRequiredMessage("Amenities")
+					:""
+				}})
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Can subscribe 
+<div class="form-group row has-success has-error has-feedback">
+	<label class="col-sm-2 control-label" for="canSubscribe">Subscription offered</label>
+	<div class="col-sm-5">
+		<input type="checkbox" id="canSubscribe" name="canSubscribe"
+			[(ngModel)]="maintenanceService.canSubscribe">
+	</div>
+</div>
+
+<!-- Can request one time 
+<div class="form-group row has-success has-error has-feedback">
+	<label class="col-sm-2 control-label" for="canRequestOneTime">Can Request One Time</label>
+	<div class="col-sm-5">
+		<input type="checkbox" id="canRequestOneTime" name="canRequestOneTime"
+			[(ngModel)]="maintenanceService.canRequestOneTime">
+	</div>
+</div>-->
+
+<!-- Validity Period
+<div class="form-group row has-success has-error has-feedback">
+	<label for="validFrom" class="col-sm-2 control-label">Validity Period *</label>
+	<div class="col-sm-5">
+		<my-date-range-picker [options]="myDateRangePickerOptions" (dateRangeChanged)="onDateRangeChanged($event)"
+        	 [(ngModel)]="dateRange" required></my-date-range-picker>
+	</div>
+</div>
+
+<!-- Valid To -->
+<!--<div class="form-group row has-success has-error has-feedback">
+	<label for="validTo" class="col-sm-2 control-label">Valid To *</label>
+	<div class="col-sm-5">
+		<my-date-picker [options]="myDatePickerOptions" (dateChanged)="onValidToChanged($event)" 
+			[placeholder]="maintenanceService.validTo ? maintenanceService.validTo : 'Select a date'"></my-date-picker>
+	</div>
+</div>-->
